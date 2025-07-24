@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tài khoản - LE VI STORE</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/form.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1 class="logo">LE VI STORE</h1>
+      <nav>
+        <a href="index.html">Trang chủ</a>
+        <a href="contact.html">Liên hệ</a>
+        <a href="login.html">Đăng nhập</a>
+        <a href="register.html">Đăng ký</a>
+        <a href="cart.html">Giỏ hàng</a>
+        <a href="profile.html" class="active">Tài khoản</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container form-container profile-page-content">
+      <h2>Thông tin tài khoản</h2>
+
+      <div id="userInfoDisplay">
+     
+        <p>Email: <span id="profileEmail"></span></p>
+        </div>
+
+      <div id="notLoggedInMessage" style="display: none;">
+        <p>Bạn chưa đăng nhập. Vui lòng <a href="login.html">Đăng nhập</a> để xem thông tin tài khoản.</p>
+      </div>
+
+      <button id="logoutButton" class="btn-primary" style="display: none;">Đăng xuất</button>
+    </div>
+  </main>
+
+  <footer>
+    <div id="footer-placeholder"></div>
+  </footer>
+
+  <script>
+    // Hàm hiển thị thông tin người dùng
+    function displayUserInfo() {
+      const userInfoDisplay = document.getElementById('userInfoDisplay');
+      const notLoggedInMessage = document.getElementById('notLoggedInMessage');
+      const logoutButton = document.getElementById('logoutButton');
+      const profileUsername = document.getElementById('profileUsername');
+      const profileEmail = document.getElementById('profileEmail');
+
+      const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+      if (currentUser) {
+        // Nếu có người dùng đã đăng nhập
+ 
+        profileEmail.textContent = currentUser.email; // Hiển thị email
+        userInfoDisplay.style.display = 'block'; // Hiển thị thông tin
+        notLoggedInMessage.style.display = 'none'; // Ẩn thông báo chưa đăng nhập
+        logoutButton.style.display = 'block'; // Hiển thị nút đăng xuất
+      } else {
+        // Nếu chưa có người dùng đăng nhập
+        userInfoDisplay.style.display = 'none'; // Ẩn thông tin
+        notLoggedInMessage.style.display = 'block'; // Hiển thị thông báo chưa đăng nhập
+        logoutButton.style.display = 'none'; // Ẩn nút đăng xuất
+      }
+    }
+
+    // Xử lý sự kiện click nút Đăng xuất
+    document.getElementById('logoutButton').addEventListener('click', function() {
+      localStorage.removeItem('currentUser'); // Xóa thông tin người dùng khỏi localStorage
+      alert('Bạn đã đăng xuất!');
+      window.location.href = 'index.html'; // Chuyển về trang chủ hoặc trang đăng nhập
+    });
+
+    // Gọi hàm hiển thị thông tin khi trang tải
+    displayUserInfo();
+
+    // Load footer.html
+    fetch("footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer-placeholder").innerHTML = data;
+      })
+      .catch(error => console.error('Error loading footer:', error));
+  </script>
+</body>
+</html>

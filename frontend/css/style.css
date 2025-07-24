@@ -1,0 +1,573 @@
+/* ======================== */
+/* ======== GLOBALS ======= */
+/* ======================== */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8; /* Nền nhẹ cho toàn bộ trang, có thể điều chỉnh */
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 50px; /* Ưu tiên font-size lớn hơn từ lần khai báo đầu tiên */
+    font-weight: bold;
+    margin: 40px 0 20px;
+    color: #2c2c2c;
+}
+
+/* ======================== */
+/* ======== HEADER ======== */
+/* ======================== */
+/* ======================== */
+/* ======== HEADER ======== */
+/* ======================== */
+.main-header {
+    background-color: #2a2a2a; /* Nền header tối hơn để nổi bật chữ logo */
+    color: #fff;
+    padding: 20px 0;
+}
+
+.main-header .container {
+    display: flex;
+    flex-direction: column; /* Logo và nav nằm trên/dưới nhau */
+    align-items: center; /* Căn giữa theo chiều ngang */
+    padding: 0 20px; /* Đảm bảo padding cho container */
+}
+
+.logo {
+    font-family: 'Playfair Display', serif; /* Font chữ cho logo */
+    font-size: 38px; /* Kích thước chữ logo lớn hơn */
+    font-weight: 700;
+    color: #ffd700; /* Màu vàng đồng hoặc vàng tươi cho logo để nổi bật */
+    letter-spacing: 2px;
+    text-align: left; /* Căn chữ trong logo sang trái */
+    margin-bottom: 25px; /* Tăng khoảng cách dưới logo */
+    width: 100%; /* Đảm bảo logo chiếm hết chiều rộng để text-align hoạt động */
+    /* Thêm shadow nhẹ cho logo để tạo chiều sâu */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); 
+}
+
+.main-nav {
+    display: flex;
+    justify-content: center; /* Căn giữa các liên kết nav */
+    flex-wrap: wrap; /* Cho phép các mục xuống dòng trên màn hình nhỏ */
+    gap: 20px; /* Khoảng cách giữa các liên kết */
+    list-style: none; /* Bỏ dấu chấm list */
+    padding: 0;
+    margin: 0;
+    width: 100%; /* Đảm bảo nav chiếm hết chiều rộng để justify-content hoạt động */
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: #fff; /* Màu chữ trắng cho các nút */
+    padding: 20px 35px; /* Tăng padding để nút lớn hơn */
+    border-radius: 30px; /* Bo tròn hoàn toàn các nút */
+    background-color: #5a4b3d; /* Màu nền nút hơi nâu đậm, phù hợp với tông màu store */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    font-weight: 600; /* In đậm chữ */
+    text-transform: uppercase; /* Viết hoa chữ */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Thêm đổ bóng cho nút */
+}
+
+.main-nav a.active { /* Cho nút đang được chọn */
+    background-color: #8c7657; /* Màu khác để đánh dấu nút active */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.main-nav a:hover {
+    background-color: #8c7657; /* Màu nền khi hover (nâu sáng hơn) */
+    transform: translateY(-2px); /* Nâng nút lên một chút */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3); /* Tăng đổ bóng khi hover */
+}
+
+/* Responsive cho Header (Nếu cần) */
+@media (max-width: 768px) {
+    .main-nav {
+        flex-direction: column; /* Stack các nút theo chiều dọc trên mobile */
+        gap: 10px; /* Giảm khoảng cách */
+        align-items: center; /* Căn giữa các nút khi stack dọc */
+    }
+    .main-nav a {
+        width: 80%; /* Nút chiếm 80% chiều rộng trên mobile */
+        text-align: center;
+    }
+    .logo {
+        font-size: 30px; /* Giảm kích thước logo trên mobile */
+        margin-bottom: 15px;
+    }
+}
+
+.main-nav {
+    display: flex;
+    justify-content: center; /* Căn giữa các liên kết nav */
+    gap: 20px; /* Khoảng cách giữa các liên kết */
+    list-style: none; /* Bỏ dấu chấm list */
+    padding: 0;
+    margin: 0;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: #fff;
+    padding: 20px 35px;
+    border-radius: 5px;
+    background-color: rgba(173, 12, 12, 0.3); /* Nền nhẹ cho các liên kết */
+    transition: background-color 0.3s ease;
+}
+
+.main-nav a:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+/* ======================== */
+/* ====== CATEGORIES ====== */
+/* ======================== */
+.category-menu {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 30px 20px;
+    background-color: #6a512c46;
+}
+
+.category-item {
+    text-align: center;
+    border: 2px dashed #ccc;
+    border-radius: 50%;
+    padding: 20px;
+    width: 100px;
+    height: 100px;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+}
+
+.category-item img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 8px;
+}
+
+.category-item p {
+    font-size: 14px;
+    font-weight: bold;
+    color: #000000; /* Màu chữ danh mục */
+}
+
+.category-item:hover {
+    background-color: #8b7f67;
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.category-nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    list-style: none;
+    padding: 20px;
+    background-color: #6a512c46; /* Trùng với category-menu, có thể gộp nếu luôn dùng chung */
+}
+
+.category-nav li a {
+    text-decoration: none;
+    color: #222;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 20px;
+    transition: background 0.3s ease;
+}
+
+.category-nav li a:hover {
+    background: #dfdfdf;
+}
+
+/* ======================== */
+/* ======== BANNERS ======= */
+/* ======================== */
+.fashion-banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff; /* Nền banner */
+}
+
+.fashion-banner img {
+    max-width: 60%;
+    width: 80%;
+    height: auto; /* Thay vì 10%, để hình ảnh không bị méo */
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.full-banner {
+    width: 100%;
+    overflow: hidden;
+}
+
+.full-banner img {
+    width: 100%;
+    height: auto; /* Thay vì 50%, để hình ảnh không bị méo */
+    display: block;
+    object-fit: cover;
+}
+
+/* ======================== */
+/* ======= PRODUCTS ======= */
+/* ======================== */
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 0 30px 50px;
+}
+
+.product-card {
+    width: 220px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    overflow: hidden;
+    transition: transform 0.3s;
+    text-align: center;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px 15px 0 0;
+}
+
+.product-title {
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px;
+    min-height: 50px;
+}
+
+.price {
+    color: #e53935; /* Màu giá sản phẩm */
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.rating {
+    font-size: 18px;
+    color: #ef0101; /* Màu sao đánh giá */
+    padding-bottom: 10px;
+}
+
+.btn-add {
+    background: #8d8a89; /* Màu nền nút thêm giỏ hàng */
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    margin-bottom: 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-add:hover {
+    background: #666160; /* Màu nền khi hover */
+}
+
+/* product-item: Đây là style cho các item riêng lẻ, có thể dùng thay cho product-card
+   hoặc là một kiểu hiển thị khác. Giữ nguyên theo ý định của bạn. */
+.product-item {
+    display: none; /* Ban đầu ẩn */
+    width: 200px;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+    border-radius: 8px;
+    background: white;
+    box-shadow: 0 2px 5px rgb(255, 242, 242);
+}
+
+.product-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+/* ======================== */
+/* ======= SEARCH BAR ======= */
+/* ======================== */
+.search-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    padding: 10px;
+    gap: 10px;
+}
+
+.search-bar input[type="text"] {
+    width: 300px;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.search-bar input[type="text"]:focus {
+    border-color: #847e7e;
+    box-shadow: 0 0 5px #b6b2b2;
+}
+
+.search-bar button {
+    padding: 10px 20px;
+    background-color: #9a9797;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.search-bar button:hover {
+    background-color: #e65c50;
+}
+
+/* ======================== */
+/* ======== FOOTER ======== */
+/* ======================== */
+/* ===== FOOTER ===== */
+/* ======================== */
+/* ======== FOOTER ======== */
+/* ======================== */
+.footer {
+    background-color: #141414; /* Giữ màu nền của bạn */
+    color: #ffffff; /* Giữ màu chữ chính của bạn */
+    padding: 40px 20px 20px; /* Tăng padding trên để có nhiều không gian hơn */
+    font-family: Arial, sans-serif;
+    line-height: 1.6; /* Tăng chiều cao dòng để dễ đọc */
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Giữ bố cục căn chỉnh từ bạn */
+    gap: 30px;
+    padding-bottom: 20px;
+}
+
+/* Định nghĩa chiều rộng cho 4 phần chính của footer bằng flex-grow, flex-shrink, flex-basis */
+.footer-about {
+    flex: 2; /* Giữ tỷ lệ rộng hơn cho phần "LE VI STORE" */
+    min-width: 280px; /* Tăng chiều rộng tối thiểu */
+    box-sizing: border-box;
+    text-align: left; /* Đảm bảo nội dung căn trái */
+}
+
+.footer-links,
+.footer-contact,
+.footer-social {
+    flex: 1; /* Giữ tỷ lệ bằng nhau cho các phần khác */
+    min-width: 180px; /* Tăng chiều rộng tối thiểu */
+    box-sizing: border-box;
+    text-align: left; /* Đảm bảo nội dung căn trái */
+}
+
+.footer h3,
+.footer h4 {
+    color: #ac9884; /* Màu vàng đồng nổi bật cho tiêu đề */
+    margin-bottom: 20px; /* Tăng khoảng cách dưới tiêu đề */
+    font-size: 26px; /* TĂNG KÍCH THƯỚC TIÊU ĐỀ LỚN HƠN */
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: left; /* **ĐẢM BẢO TIÊU ĐỀ CĂN TRÁI** */
+}
+
+.footer-about p {
+    font-size: 16px; /* TĂNG KÍCH THƯỚC ĐOẠN VĂN GIỚI THIỆU */
+    color: #dcdcdc; /* Giữ màu chữ từ bạn */
+    margin-bottom: 0;
+}
+
+/* Liên kết nhanh */
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links ul li {
+    margin-bottom: 12px; /* Tăng khoảng cách giữa các mục liên kết */
+}
+
+.footer-links ul li a {
+    color: #dcdcdc; /* Giữ màu chữ từ bạn */
+    text-decoration: none;
+    font-size: 16px; /* TĂNG KÍCH THƯỚC CHỮ LIÊN KẾT NHANH */
+    transition: color 0.3s ease;
+}
+
+.footer-links ul li a:hover {
+    text-decoration: underline;
+    color: #f8b500; /* Giữ màu hover từ bạn */
+}
+
+/* Thông tin liên hệ */
+.footer-contact p {
+    font-size: 16px; /* TĂNG KÍCH THƯỚC CHỮ THÔNG TIN LIÊN HỆ */
+    margin-bottom: 12px; /* Tăng khoảng cách giữa các dòng thông tin */
+    display: flex;
+    align-items: flex-start; /* Căn chỉnh lên đầu để văn bản dài không bị lệch */
+    color: #dcdcdc; /* Giữ màu chữ từ bạn */
+}
+
+/* Kết nối với chúng tôi (Social Icons) */
+.footer-social .social-icons {
+    display: flex;
+    gap: 30px; /* TĂNG KHOẢNG CÁCH GIỮA CÁC KHỐI ICON+TÊN */
+    margin-top: 20px; /* Tăng khoảng cách trên */
+    flex-wrap: wrap;
+    justify-content: flex-start; /* **ĐẢM BẢO CÁC ICON CŨNG CĂN TRÁI VỚI TIÊU ĐỀ** */
+}
+
+.footer-social .social-icons a {
+    display: flex;
+    flex-direction: column; /* Xếp icon và chữ theo cột */
+    align-items: center; /* Căn giữa icon và chữ */
+    text-decoration: none;
+    color: #f0f0f0; /* Giữ màu chữ tên ứng dụng */
+    transition: color 0.3s ease;
+    width: 80px; /* TĂNG CHIỀU RỘNG CỦA VÙNG ICON+TÊN */
+}
+
+.footer-social .social-icons a:hover {
+    color: #f8b500; /* Giữ màu hover từ bạn */
+}
+
+.footer-social .social-icons a i { /* Style riêng cho icon Font Awesome */
+    width: 45px; /* TĂNG KÍCH THƯỚC VÙNG BAO QUANH ICON */
+    height: 45px;
+    border-radius: 50%;
+    background-color: #5a4b3d; /* Nền icon */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff; /* Màu icon (ví dụ: trắng) */
+    font-size: 24px; /* TĂNG KÍCH THƯỚC CỦA CHÍNH ICON */
+    margin-bottom: 8px; /* Khoảng cách giữa icon và tên */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.footer-social .social-icons a:hover i {
+    background-color: #8c7657; /* Nền icon khi hover */
+    transform: translateY(-3px);
+}
+
+.footer-social .social-icons a span {
+    font-size: 15px; /* TĂNG KÍCH THƯỚC CHỮ TÊN ỨNG DỤNG */
+    white-space: nowrap;
+}
+
+/* Phần bản quyền */
+.footer-bottom {
+    text-align: center;
+    padding-top: 30px; /* Tăng padding trên */
+    margin-top: 40px; /* Tăng margin trên */
+    border-top: 1px solid #444; /* Giữ đường kẻ phân cách */
+    font-size: 15px; /* TĂNG KÍCH THƯỚC CHỮ PHẦN BẢN QUYỀN */
+    color: #aaa;
+}
+
+/* ======================== */
+/* ====== RESPONSIVE ====== */
+/* ======================== */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .footer-about,
+    .footer-links,
+    .footer-contact,
+    .footer-social {
+        width: 100%;
+        min-width: unset;
+        text-align: left; /* Đảm bảo căn trái trên màn hình nhỏ */
+    }
+
+    .footer-about h3,
+    .footer-links h4,
+    .footer-contact h4,
+    .footer-social h4 {
+        font-size: 24px; /* Điều chỉnh kích thước tiêu đề trên màn hình nhỏ hơn */
+        margin-bottom: 15px;
+    }
+    .footer-about p,
+    .footer-links ul li a,
+    .footer-contact p,
+    .footer-social .social-icons a span,
+    .footer-bottom p {
+        font-size: 15px; /* Điều chỉnh kích thước chữ chung trên màn hình nhỏ hơn */
+    }
+
+    .footer-social .social-icons {
+        justify-content: flex-start;
+        gap: 20px;
+    }
+    .footer-social .social-icons a {
+        width: 70px;
+    }
+    .footer-social .social-icons a i {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer {
+        padding: 25px 15px 15px;
+    }
+
+    .footer-about h3,
+    .footer-links h4,
+    .footer-contact h4,
+    .footer-social h4 {
+        font-size: 20px; /* Điều chỉnh kích thước tiêu đề trên màn hình rất nhỏ */
+    }
+    .footer-about p,
+    .footer-links ul li a,
+    .footer-contact p,
+    .footer-social .social-icons a span,
+    .footer-bottom p {
+        font-size: 14px; /* Điều chỉnh kích thước chữ chung trên màn hình rất nhỏ */
+    }
+    .footer-social .social-icons a {
+        width: 60px;
+    }
+    .footer-social .social-icons a i {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+    }
+}

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Sản phẩm</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f3f3f3;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .search-bar {
+      margin: 20px auto;
+      text-align: center;
+    }
+
+    .search-bar input {
+      width: 300px;
+      padding: 10px 15px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      font-size: 16px;
+    }
+
+    .product-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .product-item {
+      display: none; /* Ẩn ban đầu */
+      border: 1px solid #eee;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+      background-color: #fff;
+      transition: all 0.3s ease;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+
+    .product-item:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .product-item img {
+      width: 100%;
+      max-height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .product-item h3 {
+      font-size: 16px;
+      color: #222;
+    }
+
+    .product-item p {
+      color: #e74c3c;
+      font-weight: bold;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Danh sách sản phẩm</h1>
+
+  <!-- KHUNG TÌM KIẾM -->
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm..." oninput="filterProducts()">
+  </div>
+
+  <!-- DANH SÁCH SẢN PHẨM -->
+  <div class="product-list" id="productList">
+    <div class="product-item">
+      <img src="img/dam1.jpg" alt="Đầm trễ vai">
+      <h3>Đầm trễ vai nhẹ đính dây nổi bật</h3>
+      <p>875.000đ</p>
+    </div>
+    <div class="product-item">
+      <img src="img/dam2.jpg" alt="Đầm mini polo">
+      <h3>Đầm mini đơn giản, thời trang cổ polo nữ Flirla, phù hợp cho mùa hè</h3>
+      <p>705.000đ</p>
+    </div>
+    <div class="product-item">
+      <img src="img/dam3.jpg" alt="Váy đuôi cá">
+      <h3>Váy đuôi cá in chấm bi, eo thun, vai trễ, dây buộc nơ bên hông</h3>
+      <p>205.000đ</p>
+    </div>
+    <div class="product-item">
+      <img src="img/dam4.jpg" alt="Váy cổ dài">
+      <h3>Váy Đầm Ôm Cổ Dài Hè Nữ Không Tay Kiểu Đèn Lồng</h3>
+      <p>276.000đ</p>
+    </div>
+    <div class="product-item">
+      <img src="img/dam5.jpg" alt="Áo khoác len">
+      <h3>Váy mini tay bồng hở lưng in hoa Firerie, Váy mùa hè áo quần mùa xuân</h3>
+      <p>206.000đ</p>
+    </div>
+    <div class="product-item">
+      <img src="img/ao1.jpg" alt="Áo phông INAWLY nữ rộng rãi, cổ V ngắn tay, in kỹ thuật số">
+      <h3>Áo phông INAWLY nữ rộng rãi, cổ V ngắn tay, in kỹ thuật số</h3>
+      <p>138.000đ</p>
+    </div>
+     <div class="product-item">
+      <img src="img/Tui.jpg" alt="FEISTURE 1 cái túi bóng chuyền PU nhiều túi màu sắc cho phụ nữ, túi đeo vai nách">
+      <h3>FEISTURE 1 cái túi bóng chuyền PU nhiều túi màu sắc cho phụ nữ, túi đeo vai nách</h3>
+      <p>189.000đ</p>
+    </div>
+     <div class="product-item">
+      <img src="img/chanvay.jpg" alt="Chân váy mini xếp tầng nhún dễ thương màu đen nhung Comfortcana dành cho phụ nữ cho tiệc mùa đông">
+      <h3>Chân váy mini xếp tầng nhún dễ thương màu đen nhung Comfortcana dành cho phụ nữ cho tiệc mùa đông</h3>
+      <p>299.000đ</p>
+    </div>
+  <script>
+    function filterProducts() {
+      const input = document.getElementById("searchInput").value.toLowerCase().trim();
+      const products = document.querySelectorAll(".product-item");
+
+      products.forEach(product => {
+        const name = product.querySelector("h3").textContent.toLowerCase();
+        product.style.display = (name.includes(input) && input !== "") ? "block" : "none";
+      });
+    }
+  </script>
+
+

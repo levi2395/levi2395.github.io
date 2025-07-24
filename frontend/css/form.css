@@ -1,0 +1,125 @@
+/* Kiểu chữ và màu nền tổng thể */
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(to bottom, #fdfbfb, #ebedee);
+  color: #222;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+/* Giao diện Header đẹp */
+.main-header {
+   background-color: #6a512c46;
+  padding: 50px 0;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.main-header .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: #000000;
+  letter-spacing: 0px;
+  text-align: left; /* THÊM DÒNG NÀY ĐỂ CĂN CHỈNH NỘI DUNG CHỮ LOGO SANG TRÁI */
+  margin-top: 10px; /* Hoặc điều chỉnh margin cho phù hợp */
+  margin-right: auto; /* Tùy chọn: Đảm bảo logo chiếm không gian cần thiết bên trái */
+}
+
+.main-nav {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.main-nav a {
+  background-color: #a8a0a0;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.main-nav a:hover {
+  background-color: #636567;
+}
+
+.main-nav a.active {
+  background-color: #e67e22;
+}
+
+
+/* Container của form */
+.container.form-container {
+  max-width: 450px;
+  margin: 40px auto;
+  background-color: rgb(249, 249, 248);
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.1);
+  padding: 30px;
+}
+
+/* Tiêu đề form */
+h2 {
+  text-align: center;
+  color: #000000;
+  margin-bottom: 20px;
+}
+
+/* Cấu trúc form */
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form label {
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #000000;
+}
+
+.form input {
+  padding: 12px 14px;
+  margin-bottom: 18px;
+  border: 1px solid #ffffff;
+  border-radius: 8px;
+  font-size: 20px;
+  transition: border 0.3s;
+}
+
+.form input:focus {
+  border-color: #bb4b29;
+  outline: none;
+  background-color: #ffffff;
+}
+
+/* Style cho liên kết "Đăng ký ngay" */
+.register-now-link {
+    color: #8a2be2; /* Màu tím bạn đang thấy */
+    text-decoration: underline; /* Gạch chân */
+    font-weight: bold; /* In đậm hơn */
+    font-size: 34px; /* Tăng kích cỡ chữ */
+    /* Thêm các thuộc tính khác nếu muốn: */
+    /* padding: 5px 10px; */
+    /* background-color: #f0f0f0; */
+    /* border-radius: 5px; */
+    /* display: inline-block; */
+}
+
+.register-now-link:hover {
+    color: #9932cc; /* Màu tím đậm hơn khi hover */
+    text-decoration: none; /* Bỏ gạch chân khi hover */
+}

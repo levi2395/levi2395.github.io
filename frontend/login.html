@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Đăng nhập - LE VI STORE</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/form.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1 class="logo">LE VI STORE</h1>
+      <nav>
+        <a href="index.html">Trang chủ</a>
+        <a href="contact.html">Liên hệ</a>
+        <a href="login.html" class="active">Đăng nhập</a>
+        <a href="register.html">Đăng ký</a>
+        <a href="cart.html">Giỏ hàng</a>
+        <a href="profile.html">Tài khoản</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container form-container">
+    <h2>Đăng nhập tài khoản</h2>
+    <form class="form" id="loginForm">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="email@example.com" required />
+
+      <label for="password">Mật khẩu</label>
+      <input type="password" id="password" name="password" placeholder="Nhập mật khẩu" required />
+
+      <div id="errorMessage" style="color: red; margin: 10px 0;"></div>
+
+      <button type="submit">Đăng nhập</button>
+    </form>
+    <p>
+      Quên mật khẩu? <a href="forgot-password.html">Khôi phục</a><br />
+      Chưa có tài khoản? <a href="register.html">Đăng ký ngay</a>
+    </p>
+  </div>
+
+  <footer>
+    <div id="footer-placeholder"></div>
+  </footer>
+
+  <script>
+    // Logic xử lý form đăng nhập
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const errorMessage = document.getElementById("errorMessage");
+
+      const users = JSON.parse(localStorage.getItem("users")) || [];
+      const user = users.find(u => u.email === email && u.password === password);
+
+      if (user) {
+        // Lưu THÔNG TIN ĐẦY ĐỦ CỦA NGƯỜI DÙNG (bao gồm username) vào LocalStorage
+        localStorage.setItem("currentUser", JSON.stringify(user));
+        alert("Đăng nhập thành công!");
+        window.location.href = "profile.html"; // Chuyển đến trang profile.html
+      } else {
+        errorMessage.textContent = "Sai tên đăng nhập hoặc mật khẩu!";
+      }
+    });
+
+    // Load footer.html
+    fetch("footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer-placeholder").innerHTML = data;
+      })
+      .catch(error => console.error('Error loading footer:', error));
+  </script>
+</body>
+</html>

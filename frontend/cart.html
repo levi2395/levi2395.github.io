@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <link rel="stylesheet" href="styles/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ hàng - LE VI STORE</title>
+    <link rel="stylesheet" href="styles/style.css"> 
+    <link rel="stylesheet" href="css/footer.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta charset="UTF-8">
+  <title>Giỏ hàng - LE VI STORE</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 30px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #020202;
+      margin-bottom: 30px;
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      padding: 15px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .cart-item:last-child {
+      border-bottom: none;
+    }
+
+    .cart-item img {
+      width: 100px;
+      border-radius: 6px;
+    }
+
+    .item-info {
+      flex-grow: 1;
+      padding: 0 20px;
+    }
+
+    .item-info h3 {
+      margin: 0 0 5px;
+      font-size: 16px;
+      color: #222;
+    }
+
+    .item-info p {
+      margin: 4px 0;
+      color: #555;
+    }
+
+    .cart-item button {
+      background-color: #e74c3c;
+      color: #fff;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .cart-item button:hover {
+      background-color: #c0392b;
+    }
+
+    #total {
+      font-size: 18px;
+      font-weight: bold;
+      text-align: right;
+      margin-top: 20px;
+      color: #000;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+    }
+
+    .actions button {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.3s ease;
+    }
+
+    .continue-btn {
+     
+      color: #000000;
+    }
+
+    .continue-btn:hover {
+      background-color: #2980b9;
+    }
+
+    .checkout-btn {
+      
+      color: #000000;
+    }
+
+    .checkout-btn:hover {
+      background-color: #27ae60;
+    }
+
+    .empty {
+      text-align: center;
+      color: #999;
+      padding: 40px 0;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🛍️ GIỎ HÀNG CỦA BẠN </h1>
+    <div id="cartItems"></div>
+    <p id="total">Tổng cộng: 0đ</p>
+
+    <div class="actions">
+      <button class="continue-btn" onclick="window.location.href='index.html'">⬅️ Tiếp tục mua sắm</button>
+      <button class="checkout-btn" onclick="thanhToan()">💳 Thanh toán</button>
+    </div>
+  </div>
+
+  <script>
+    function formatCurrency(num) {
+      return num.toLocaleString('vi-VN') + 'đ';
+    }
+
+    function renderCart() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const container = document.getElementById("cartItems");
+      const totalText = document.getElementById("total");
+
+      container.innerHTML = "";
+      let total = 0;
+
+      if (cart.length === 0) {
+        container.innerHTML = `<div class="empty">Giỏ hàng trống. Hãy thêm sản phẩm để bắt đầu mua sắm!</div>`;
+        totalText.innerText = "Tổng cộng: 0đ";
+        return;
+      }
+
+      cart.forEach((item, index) => {
+        total += item.price * item.quantity;
+
+        const div = document.createElement("div");
+        div.className = "cart-item";
+        div.innerHTML = `
+          <img src="${item.image}" alt="${item.title}">
+          <div class="item-info">
+            <h3>${item.title}</h3>
+            <p>Giá: ${formatCurrency(item.price)}</p>
+            <p>Số lượng: ${item.quantity}</p>
+          </div>
+          <button onclick="removeItem(${index})">Xoá</button>
+        `;
+        container.appendChild(div);
+      });
+
+      totalText.innerText = "Tổng cộng: " + formatCurrency(total);
+    }
+
+    function removeItem(index) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      renderCart();
+    }
+
+    function thanhToan() {
+      if (confirm("Bạn có chắc chắn muốn thanh toán?")) {
+        alert("Cảm ơn bạn đã mua hàng tại LE VI STORE!");
+        localStorage.removeItem("cart");
+        window.location.href = "index.html";
+      }
+    }
+    document.addEventListener("DOMContentLoaded", renderCart);
+  </script>
+  
+</body>
+</html>
+<div id="footer-placeholder"></div>
+<script>
+  fetch("footer.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("footer-placeholder").innerHTML = data;
+    });
+</script>
+

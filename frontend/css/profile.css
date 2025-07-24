@@ -1,0 +1,109 @@
+/* css/profile.css */
+
+.profile-container {
+    max-width: 700px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    min-height: 400px; /* Đảm bảo đủ chiều cao */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-container h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 15px;
+    width: 100%;
+}
+
+.profile-info-card {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 30px;
+    width: 80%; /* Giảm chiều rộng để trông gọn hơn */
+    text-align: left;
+}
+
+.profile-info-card p {
+    font-size: 17px;
+    color: #555;
+    margin: 12px 0;
+    line-height: 1.5;
+}
+
+.profile-info-card strong {
+    color: #222;
+    margin-right: 10px;
+}
+
+.btn-logout {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+.btn-logout:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px);
+}
+
+.not-logged-in {
+    font-size: 18px;
+    color: #e74c3c;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.not-logged-in a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.not-logged-in a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .profile-container {
+        margin: 30px auto;
+        padding: 20px;
+    }
+
+    .profile-info-card {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .profile-container h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .profile-info-card p {
+        font-size: 15px;
+    }
+
+    .btn-logout {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
