@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>LE VI STORE - Nổi bật</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/form.css">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <h1 class="logo">LE VI STORE</h1>
+            <nav class="main-nav">
+                <a href="index.html">Trang chủ</a>
+                <a href="contact.html">Liên hệ</a>
+                <a href="login.html">Đăng nhập</a>
+                <a href="register.html">Đăng ký</a>
+                <a href="cart.html">Giỏ hàng</a>
+                <a href="profile.html">Tài khoản</a>
+            </nav>
+        </div>
+    </header>
+
+<main class="main-content">
+    <h2 class="page-title">CÁC SẢN PHẨM NỔI BẬT</h2>
+    <div class="product-grid">
+        <div class="product-card">
+            <img src="images/tui1.jpg" alt="Túi bóng chuyền">
+            <h3 class="product-title">Túi bóng chuyền PU nhiều túi</h3>
+            <p class="price">189,000đ</p>
+            <div class="rating">
+                ★★★★★ <span>(3767 đã bán)</span>
+            </div>
+            <button class="btn-add">Thêm vào giỏ</button>
+        </div>
+        <div class="product-card">
+            <img src="images/chanvay1.jpg" alt="Chân váy mini">
+            <h3 class="product-title">Chân váy mini xếp tầng nhung</h3>
+            <p class="price">299,000đ</p>
+            <div class="rating">
+                ★★★★★ <span>(1337 đã bán)</span>
+            </div>
+            <button class="btn-add">Thêm vào giỏ</button>
+        </div>
+        </div>
+</main>
+    <div id="footer-container"></div>
+    <script>
+        fetch("footer.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("footer-container").innerHTML = data;
+            });
+    </script>
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -157,3 +157,22 @@ document.addEventListener('DOMContentLoaded', function() {
     // function removeItem(index) { /* ... */ } // Chỉ nên ở cart.html
     // function thanhToan() { /* ... */ } // Chỉ nên ở cart.html
 });
+document.addEventListener('DOMContentLoaded', () => {
+    const productCards = document.querySelectorAll('.product-card');
+
+    productCards.forEach(card => {
+        const addButton = card.querySelector('.btn-add');
+        addButton.addEventListener('click', () => {
+            // Lấy đường dẫn của trang chi tiết sản phẩm từ thuộc tính data-link
+            // Ví dụ: <div class="product-card" data-link="product-detail-dam1.html">
+            const productLink = card.getAttribute('data-link');
+            
+            if (productLink) {
+                window.location.href = productLink;
+            } else {
+                // Xử lý trường hợp không có liên kết
+                alert('Trang chi tiết sản phẩm này hiện chưa có.');
+            }
+        });
+    });
+});
